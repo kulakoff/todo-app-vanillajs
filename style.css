@@ -1,126 +1,156 @@
+:root {
+  --dark: #374151;
+  --darker: #1f2937;
+  --darkest: #111827;
+  --gray: #6b7280;
+  --light: #eee;
+  --pink: #ec4899;
+  --purple: #8b5cf6;
+}
+
 * {
-  margin: o;
-  padding: 0;
   box-sizing: border-box;
+  margin: 0;
+  font-family: "Fira sans", sans-serif;
 }
+
 body {
-  background-image: linear-gradient(120deg, #e2c35d, #d88771);
-  color: white;
-  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  background: var(--dark);
+  color: #fff;
 }
+
 header {
-  font-size: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
 }
-header,
-form {
-  min-height: 20vh;
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+#new-task-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
-form input,
-form button {
-  padding: 0.5rem;
-  font-size: 2rem;
+
+input,
+button {
+  appearance: none;
   border: none;
-  background: white;
+  outline: none;
+  background: none;
 }
-form button {
-  color: #d88771;
-  background: white;
+
+#new-task-input {
+  flex: 1 1 0%;
+  background: var(--darker);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  color: var(--light);
+  font-size: 1.25rem;
+}
+#new-task-input::placeholder {
+  color: var(--gray);
+}
+#new-task-submit {
+  color: var(--pink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-image: linear-gradient(to right, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-form button:hover {
-  background: #d88771;
-  color: white;
+  transition: 0.4s;
 }
 
-.todo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.todo-list {
-  min-width: 30%;
-  list-style: none;
+#new-task-submit:hover {
+  opacity: 0.8;
 }
 
-.todo {
-  margin: 0.5rem;
-  background: white;
-  color: black;
+#new-task-submit:active {
+  opacity: 0.6;
+}
+
+main {
+  flex: 1 1 0%;
+  /* padding: 2rem 1rem; */
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+.task-list {
+  padding: 1rem;
+}
+
+.task-list h2 {
   font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.task {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  transition: all 0.5s ease;
-}
-
-.todo li {
-  flex: 1;
-}
-.trash-btn,
-.complete-btn {
-  background: #ff6f47;
-  color: white;
-  border: none;
+  background-color: var(--darkest);
   padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+/* #tasks .task .content .text */
+.text {
+  color: var(--light);
+  font-size: 1.125rem;
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+}
+
+.text:not(:read-only) {
+  color: var(--pink);
+}
+.actions {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.task .actions button {
   cursor: pointer;
-  font-size: 1rem;
-}
-.complete-btn {
-  background: green;
-}
-
-.todo-item {
-  padding: 0rem 0.5 rem;
+  margin: 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.4s;
 }
 
-.fa-trash,
-.fa-check {
-  pointer-events: none;
-}
-.completed {
-  text-decoration: line-through;
-  opacity: 0.5;
-}
-.fall {
-  transform: translateY(8rem) rotateZ(20deg);
-  opacity: 0;
-}
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  border: none;
-}
-.select {
-  margin: 1rem;
-  position: relative;
-  overflow: hidden;
+.task .actions button:hover {
+  opacity: 0.8;
 }
 
-select {
-  background: white;
-  padding: 1.1rem;
-  color: #ff6f47;
-  width: 10rem;
-  cursor: pointer;
+.task .actions button:active {
+  opacity: 0.6;
 }
-.select::after {
-  content: "\25BC";
-  position: absolute;
-  background: #ff6f47;
-  top: 0;
-  right: 0;
-  padding: 1rem;
-  pointer-events: none;
-  transition: all 0.3s easy;
+
+.task .actions .edit{
+    background-image: linear-gradient(to right, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+
 }
-.select:hover::after{
-  background: white;
-  color:#ff6f47
+.task .actions .delete{
+    color:crimson;
+    /* background-image: linear-gradient(to right, var(--pink), var(--purple)); */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    cursor: pointer;
+
 }
